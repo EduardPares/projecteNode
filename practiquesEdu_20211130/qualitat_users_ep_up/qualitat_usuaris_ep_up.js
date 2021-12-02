@@ -114,7 +114,27 @@ console.log(prettyJ(totalEP));
 console.log("--------------------------------------------------------------------------------------------------------------");
 console.log("Llistat de les EP i la quantiat d'usuaris que estan assignats");
 
+var totalEP = {};
+var numUSU = {};
+var usuari = "";
+usersAll.forEach(function (unUser) {
+	const userAmbit = unUser.ambit;
+	usuari = unUser.dades.nom;
+	unUser.ambit.forEach(function (unAmbit) {
+		const [ep] = unAmbit.split('_');
+		if (!totalEP[ep]) {
+			totalEP[ep]=[usuari];
+			numUSU[ep] = 1;
 
+		}else{
+			if(!totalEP[ep].find(element => element === usuari)){
+				totalEP[ep].push(usuari);
+				numUSU[ep] += 1;
+			}	
+		}
+	})
+});
+console.log(prettyJ(numUSU));
 
 console.log("--------------------------------------------------------------------------------------------------------------");
 console.log("Llistat de les EP i UP, i els usuaris que estan assignats");
