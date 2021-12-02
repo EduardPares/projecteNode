@@ -93,10 +93,26 @@ console.log(prettyJ(totesEP));
 console.log("--------------------------------------------------------------------------------------------------------------");
 console.log("Llistat de les EP i els usuaris que estan assignats");
 
+var totalEP = {};
+var usuari = "";
+usersAll.forEach(function (unUser) {
+	const userAmbit = unUser.ambit;
+	usuari = unUser.dades.nom;
+	unUser.ambit.forEach(function (unAmbit) {
+		const [ep] = unAmbit.split('_');
+		if (!totalEP[ep]) {
+			totalEP[ep]=[usuari];
+		}else{
+			if(!totalEP[ep].find(element => element === usuari)){
+				totalEP[ep].push(usuari);
+			}	
+		}
+	})	
+});
+console.log(prettyJ(totalEP));
 
 console.log("--------------------------------------------------------------------------------------------------------------");
 console.log("Llistat de les EP i la quantiat d'usuaris que estan assignats");
-
 
 
 
