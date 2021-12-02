@@ -74,6 +74,22 @@ console.log(prettyJ(resumEP));
 console.log("--------------------------------------------------------------------------------------------------------------");
 console.log("Llistat de les EP i les seves UP");
 
+var totesEP = {};
+
+usersAll.forEach(function (unUser) {
+	const userAmbit = unUser.ambit;
+	unUser.ambit.forEach(function (unAmbit) {
+		const [ep,up] = unAmbit.split('_');
+		if (!totesEP[ep]) {
+			totesEP[ep]=[];
+		}
+		if(!totesEP[ep].find(element => element === up)){
+			totesEP[ep].push(up);
+		}	
+	})	
+});
+console.log(prettyJ(totesEP));
+
 console.log("--------------------------------------------------------------------------------------------------------------");
 console.log("Llistat de les EP i els usuaris que estan assignats");
 
