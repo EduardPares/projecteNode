@@ -167,7 +167,56 @@ console.log(prettyJ(totalEU));
 console.log("--------------------------------------------------------------------------------------------------------------");
 console.log("Llistat dels usuaris que comparteixen àmbit i què tenen en comú");
 
+var infoU = {};
+var comu = {};
+var id = 0;
+usersAll.forEach(function (unUser) {
+	const userAmbit = unUser.ambit;
+		infoU[id]={};
+		infoU[id]["id"]=unUser.dades.nom;
+		infoU[id]['ambits']= [];
 
+	unUser.ambit.forEach(function (unAmbit) {
+		const [ep,up] = unAmbit.split('_');
+		if(!infoU[id]['ambits'].find(element => element === ep)){
+			infoU[id]['ambits'].push(ep);
+		}if(!infoU[id]['ambits'].find(element => element === up)){
+			infoU[id]['ambits'].push(up);
+		}	
+
+		for(i = 0; i < id; i++){
+			
+			if(infoU[id]['ambits'].find(element => element === ep) === infoU[i]['ambits'].find(element => element === ep)){
+				if (!comu[unUser.dades.nom + "--" + infoU[i]['id']]) {
+					comu[unUser.dades.nom + "--" + infoU[i]['id']] = [infoU[id]['ambits'].find(element => element === ep)];
+				}else{
+					if(!comu[unUser.dades.nom + "--" + infoU[i]['id']].find(element => element === (infoU[id]['ambits'].find(element => element === ep)))){
+						comu[unUser.dades.nom + "--" + infoU[i]['id']].push(infoU[id]['ambits'].find(element => element === ep));
+
+					}
+				}
+				
+			}
+
+			if(infoU[id]['ambits'].find(element => element === up) === infoU[i]['ambits'].find(element => element === up)){
+				if (!comu[unUser.dades.nom + "--" + infoU[i]['id']]) {
+					comu[unUser.dades.nom + "--" + infoU[i]['id']] = [infoU[id]['ambits'].find(element => element === up)];
+				}else{
+					if(!comu[unUser.dades.nom + "--" + infoU[i]['id']].find(element => element === (infoU[id]['ambits'].find(element => element === up)))){
+						comu[unUser.dades.nom + "--" + infoU[i]['id']].push(infoU[id]['ambits'].find(element => element === up));
+
+					}
+				}
+				
+			}
+			
+		
+		}
+
+	})	
+	id++;
+});
+console.log(prettyJ(comu));
 
 console.log("--------------------------------------------------------------------------------------------------------------");
 console.log("Llistat dels usuaris sense àmbit assignat");
