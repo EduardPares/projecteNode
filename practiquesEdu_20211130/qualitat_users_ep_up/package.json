@@ -1,0 +1,11 @@
+{
+  "name": "qualitat_users_ep_up",
+  "version": "1.0.0",
+  "description": "procés de qualitat de dades sobre l'assignació d'usuaris a les EP i UP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

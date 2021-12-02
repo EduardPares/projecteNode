@@ -1,0 +1,18 @@
+Per executar-ho
+
+- Cal instal.lar el nodejs
+- Excecutar node qualitat_usuaris_ep_up.js
+- El programa llegeix un JSON  amb una llista de pacients i processa les dades, obtenint diversos resultats
+
+
+Eines:
+https://jsoneditoronline.org/
+https://app.diagrams.net/
+
+
+
+Notes:
+	- Permetre descartar el no actius
+	- 
+	-
+	 
