@@ -139,7 +139,30 @@ console.log(prettyJ(numUSU));
 console.log("--------------------------------------------------------------------------------------------------------------");
 console.log("Llistat de les EP i UP, i els usuaris que estan assignats");
 
-
+var totalEU = {};
+var usuari = "";
+usersAll.forEach(function (unUser) {
+	const userAmbit = unUser.ambit;
+	usuari = unUser.dades.nom;
+	unUser.ambit.forEach(function (unAmbit) {
+		const [ep,up] = unAmbit.split('_');
+		if (!totalEU[ep]) {
+			totalEU[ep]=[usuari];
+		}else{
+			if(!totalEU[ep].find(element => element === usuari)){
+				totalEU[ep].push(usuari);
+			}	
+		}
+		if (!totalEU[up]) {
+			totalEU[up]=[usuari];
+		}else{
+			if(!totalEU[up].find(element => element === usuari)){
+				totalEU[up].push(usuari);
+			}	
+		}
+	})	
+});
+console.log(prettyJ(totalEU));
 
 console.log("--------------------------------------------------------------------------------------------------------------");
 console.log("Llistat dels usuaris que comparteixen àmbit i què tenen en comú");
