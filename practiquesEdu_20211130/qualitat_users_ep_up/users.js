@@ -32,8 +32,8 @@
  },
  "terapeutaid": "idTera2",
  "dades": {
-  "nom": "Nom2",
-  "cognoms": "Cognom21 Cognom22"
+  "nom": "Nom23",
+  "cognoms": "Cognom213 Cognom223"
  },
  "email": "adre2@correu.eu",
  "rol": "terapeuta",
